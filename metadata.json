@@ -1,0 +1,6 @@
+{
+  "name": "PhishShield AI",
+  "description": "AI-powered phishing and scam detection dashboard for analyzing suspicious emails, SMS messages, and URLs combining Google Gemini with rule-based heuristics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

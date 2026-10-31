@@ -1,0 +1,189 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', 'Segoe UI Variable Display', system-ui, -apple-system, sans-serif;
+    --font-sans: 'DM Sans', 'Segoe UI Variable Text', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Cascadia Mono', ui-monospace, SFMono-Regular, monospace;
+
+    --bg-primary: #080E1C;
+    --bg-secondary: #101A2E;
+    --bg-card: #14213A;
+    --accent-cyan: #35C6F4;
+    --accent-mint: #55E6C1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #080E1C;
+    background-image:
+      radial-gradient(circle at 15% 12%, rgba(53, 198, 244, 0.11) 0px, transparent 42%),
+      radial-gradient(circle at 85% 18%, rgba(85, 230, 193, 0.08) 0px, transparent 40%),
+      radial-gradient(circle at 50% 85%, rgba(16, 26, 46, 0.9) 0px, transparent 60%);
+    background-attachment: fixed;
+    color: #F8FAFC;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+  }
+
+  code, pre, .font-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Premium SaaS Glassmorphic Cards */
+.saas-card {
+  background: linear-gradient(180deg, rgba(20, 33, 58, 0.88) 0%, rgba(16, 26, 46, 0.92) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(53, 198, 244, 0.16);
+  box-shadow:
+    0 24px 48px -12px rgba(4, 9, 20, 0.65),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.06);
+}
+
+.saas-card-interactive {
+  background: linear-gradient(180deg, rgba(20, 33, 58, 0.82) 0%, rgba(16, 26, 46, 0.88) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  box-shadow: 0 16px 36px -12px rgba(4, 9, 20, 0.5);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.saas-card-interactive:hover {
+  transform: translateY(-2px);
+  border-color: rgba(53, 198, 244, 0.34);
+  box-shadow:
+    0 20px 42px -12px rgba(4, 9, 20, 0.68),
+    0 0 24px -6px rgba(53, 198, 244, 0.12);
+}
+
+.saas-subcard {
+  background: rgba(16, 26, 46, 0.75);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+/* Subtle Grid Overlay for Hero Visual */
+.cyber-grid-bg {
+  background-size: 28px 28px;
+  background-image:
+    linear-gradient(to right, rgba(53, 198, 244, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(53, 198, 244, 0.05) 1px, transparent 1px);
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes floatDelayed {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes scanProgress {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeSlideUp 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-float-slow {
+  animation: floatSlow 5.5s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 6.2s ease-in-out infinite;
+}
+
+.animate-scan-bar {
+  animation: scanProgress 1.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.interactive-lift {
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+}
+
+.interactive-lift:hover:not(:disabled) {
+  transform: translateY(-1.5px);
+}
+
+.interactive-lift:active:not(:disabled) {
+  transform: scale(0.985);
+}
+
+.gauge-ring-animate {
+  transition: stroke-dashoffset 0.65s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s ease;
+}
+
+/* Reduced motion accessibility compliance */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-up,
+  .animate-fade-in,
+  .animate-float-slow,
+  .animate-float-delayed,
+  .animate-scan-bar {
+    animation: none !important;
+  }
+  .interactive-lift,
+  .saas-card-interactive,
+  .gauge-ring-animate {
+    transition: none !important;
+    transform: none !important;
+  }
+}
